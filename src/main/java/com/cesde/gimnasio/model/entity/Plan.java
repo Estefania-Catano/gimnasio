@@ -21,7 +21,7 @@ public class Plan extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private TipoPlan nombre;
 
-    private double precio;
+    private Double precio;
 
     private String beneficios;
 

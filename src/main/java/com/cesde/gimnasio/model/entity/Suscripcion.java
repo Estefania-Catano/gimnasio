@@ -1,5 +1,7 @@
 package com.cesde.gimnasio.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -19,18 +21,22 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class Suscripcion extends BaseEntity{
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate fechaInicio;
 
-    private  LocalDate fechaFin;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate fechaFin;
 
     private boolean activa;
 
     @ManyToOne
     @JoinColumn(name = "socio_id", nullable = false)
+    @JsonIgnoreProperties("suscripciones")
     private Socio socio;
 
     @ManyToOne
     @JoinColumn(name = "plan_id", nullable = false)
+    @JsonIgnoreProperties("suscripciones")
     private Plan plan;
 
 }
